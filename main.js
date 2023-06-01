@@ -60,6 +60,9 @@ function onInit() {
     gGame.life = 3
     const elLife = document.querySelector('.life')
     elLife.innerText = '🛟🛟🛟'
+
+    turnOfLights()
+
 }
 
 function buildBoard(size) {
@@ -120,7 +123,7 @@ function onCellClicked(i, j, elCell) {
                     expandShown(gBoard, i, j, elCell);
                 }
                 cell.isShown = true;
-                
+
                 gGame.shownCount++;
                 gScore++
 
@@ -145,7 +148,7 @@ function rightClick() {
 }
 
 function onCellMarked(elCell) {
-    var pos = getPos(elCell); 
+    var pos = getPos(elCell);
     var cell = gBoard[pos[1]][pos[2]];
 
     if (gGame.markedCount === 0) startTimer();
@@ -177,7 +180,7 @@ function expandShown(board, rowIdx, colIdx, elCell) {
 
             var cell = board[i][j];
             if (!cell.isShown && !cell.isMine && !cell.isMarked) {
-             
+
                 cell.isShown = true;
                 gGame.shownCount++;
 
@@ -324,6 +327,7 @@ function hideNegs(rowIdx, colIdx, elCell) {
             if (cell.isShown) continue
             elCell = document.querySelector(`.cell-${i}-${j}`);
             elCell.innerText = '';
+            if (cell.isMarked) elCell.innerText = MARKED
         }
     }
 }
@@ -386,5 +390,12 @@ function checkLists() {
     } else {
         gUserName = prompt('What is your name?')
         saveScoreWithName(gUserName, gScore)
+    }
+}
+
+function turnOfLights() {
+    for (var i = 1; i <= 3; i++) {
+        const elLight = document.querySelector(`.hint${i}`)
+        elLight.style.boxShadow = 'none'
     }
 }
