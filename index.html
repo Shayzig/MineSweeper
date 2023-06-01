@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mine</title>
+</head>
+
+<body onload="chooseDif(4)">
+
+    <h1>MineSweeper</h1>
+    <div id="timer">0.00</div>
+    <button class="btn easy" onclick="chooseDif(4)">Easy</button>
+    <button class="btn medium" onclick="chooseDif(6)">Medium</button>
+    <button class="btn hard" onclick="chooseDif(8)">Hard</button>
+
+    <div class="life"></div>
+
+    <div class="hints">
+        <button onclick="onLightHint(this)" class="hint1">🔦</button>
+        <button onclick="onLightHint(this)" class="hint2">🔦</button>
+        <button onclick="onLightHint(this)" class="hint3">🔦</button>
+    </div>
+
+    <div onclick="restart()" class="restart">
+        <h1 title="restart">😃</h1>
+    </div>
+
+    <table>
+        <tbody class="board"></tbody>
+    </table>
+
+    <div id="score-board">
+        <ul id="easy-scores-list"></ul>
+        <ul id="med-scores-list"></ul>
+        <ul id="hard-scores-list"></ul>
+    </div>
+
+    <footer>Shay Zigdon</footer>
+    <div class="modal">
+        <h3 class="msg"></h3>
+        <button onclick="closeModal()">x</button>
+
+        <script src="main.js"></script>
+        <script src="utils.js"></script>
+        <script src="score.js"></script>
+
+</body>
+
+</html>
