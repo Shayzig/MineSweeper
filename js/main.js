@@ -16,6 +16,7 @@ var gGame = {
 var gSortedPosMegaHint
 var isMegaHint = false
 var gClicksCounter = 0
+var gMegaHintAmount = 1
 var gMegaHints = [
     { i: 1, j: 4, elCell: 'elCell' },
     { i: 2, j: 3, elCell: 'elCell' },
@@ -95,8 +96,12 @@ function onInit() {
 
     gameStateStack = []
 
-    isExpandShown = false
-    gExpandCounter = 0
+    // isExpandShown = false
+    // gExpandCounter = 0
+
+    gCountSafeClick = 3
+    const elCount = document.querySelector('.safe-btn p span')
+        elCount.innerText = gCountSafeClick
 
     isMegaHint = false
 }
@@ -632,10 +637,14 @@ function darkMode(newStyle) {
 }
 
 function megaHint(elCell) {
-    isMegaHint = true
-    gGame.isOn = false
-   
-    console.log('isMegaHint', isMegaHint)
+    if(gMegaHintAmount === 1) {
+
+        isMegaHint = true
+        gGame.isOn = false
+        gMegaHintAmount--
+    }
+
+
 }
 
 function revealMegaHint() {

@@ -107,10 +107,7 @@ h1 {
     margin:10px auto;
     width: 50px;
     height: 50px;
-    line-height:60px;
     border-radius: 50%;
-    background-color: #1a293e;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.175);
     cursor: pointer;
 
 }
