@@ -103,7 +103,9 @@ function onInit() {
     const elCount = document.querySelector('.safe-btn p span')
         elCount.innerText = gCountSafeClick
 
-    isMegaHint = false
+    // isMegaHint = false
+    gMegaHintAmount = 1
+    gClicksCounter = 0
 }
 
 function buildBoard(size) {
@@ -192,7 +194,7 @@ function onCellClicked(i, j, elCell) {
                     expandShown(gBoard, i, j, elCell);
                     isExpandShown = true
                     console.log('isExpandShown', isExpandShown)
-                    console.log('gExpandCounter', gExpandCounter)
+                    // console.log('gExpandCounter', gExpandCounter)
 
                 } else {
                     cell.isShown = true;
@@ -307,7 +309,7 @@ function expandShown(board, rowIdx, colIdx, elCell) {
                 elCell.innerText = mineNegs;
                 gScore++
 
-                gExpandCounter++
+                // gExpandCounter++
 
                 saveGameState(elCell, i, j)
 
@@ -444,9 +446,13 @@ function revealNegs(rowIdx, colIdx, elCell) {
             if (j < 0 || j > gBoard[0].length - 1) continue
             if (i === rowIdx && j === colIdx) continue
 
+            var cell = gBoard[i][j]
             var mineNegs = countMinesAround(gBoard, i, j);
             elCell = document.querySelector(`.cell-${i}-${j}`);
             elCell.innerText = mineNegs;
+            if(cell.isMine){
+            elCell.innerText = MINE
+            }
         }
     }
 }
@@ -636,12 +642,13 @@ function darkMode(newStyle) {
     }
 }
 
-function megaHint(elCell) {
+function megaHint() {
     if(gMegaHintAmount === 1) {
+        console.log('happen')
 
         isMegaHint = true
-        gGame.isOn = false
         gMegaHintAmount--
+        gGame.isOn = false
     }
 
 
@@ -651,12 +658,16 @@ function revealMegaHint() {
 
     for (var i = gSortedPosMegaHint.lowestI; i <= gSortedPosMegaHint.highestI; i++) {
         for (var j = gSortedPosMegaHint.lowestJ; j <= gSortedPosMegaHint.highestJ; j++) {
-            
+            var cell = gBoard[i][j]
             var mineNegs = countMinesAround(gBoard, i, j);
             elCell = document.querySelector(`.cell-${i}-${j}`);
             elCell.innerText = mineNegs;
+            if(cell.isMine){
+                elCell.innerText = MINE
+                }
         }
     }
+    gGame.isOn = true
 }
 
 
