@@ -2,7 +2,7 @@
 
 Dive into the world of Minesweeper, a classic game crafted using pure JavaScript. This project emerged during a coding journey and serves as a testament to vanilla JavaScript's versatility. Challenge yourself with uncovering hidden mines, strategically marking them, and clearing the board to victory.
 
-Try it here: [MineSweeper]( https://shayzig.github.io/MineSweeper/).
+Try it here: [MineSweeper]( https://shayzig.github.io/MineSweeper/)
 
 
 # Classic Gameplay
@@ -25,5 +25,5 @@ Whether you're a Minesweeper enthusiast or new to the game, this project offers 
 
 Click the link below to start playing Minesweeper and put your puzzle-solving abilities to the test.
 
-Try it here: [MineSweeper]( https://shayzig.github.io/MineSweeper/).
+Try it here: [MineSweeper]( https://shayzig.github.io/MineSweeper/)
 
